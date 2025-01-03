@@ -23,21 +23,21 @@ Students need to provide their personal information to check their eligibility(p
 We(My team) practiced these 4 machine learning models to get the expected values.
 
 Out of these models used, ANN model gave us best accuracy scores.
- Accuracy: 92%
- Sensitivity: 92%
- Specificity: 100%
+Accuracy: 92%
+Sensitivity: 92%
+Specificity: 100%
 
 # Confusion Matrix:
 Prediction Reference
- 0 1
-0 208 0
-1 17 15
+## 0 1
+## 0 208 0
+## 1 17 15
 
-For whom this application is useful:
-For Students:
+# For whom this application is useful:
+## For Students:
 After providing their personal information to the application, model will start running and provide the results in probabilistic scores[0, 1]. 
 Then students can expect whether they will receive an interview call from the department advisor.
 
-For Advisor:
+## For Advisor:
 Records will be stored in an excel file for those students who are checking their probabilistic scores.
 So, advisor can decide the cut-off score(ex: 0.7 or 0.8 etc.) based on the open positions.
