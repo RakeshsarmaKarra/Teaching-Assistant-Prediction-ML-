@@ -3,8 +3,7 @@
 # Problem Statement:
 Identification of eligible students for the Teaching Assistant position in University of North Texas.
 
-# DATA DICTIONARY
-
+# Data Dictionary
 Column Name Data Type Description Sample Values Number of unique Values
 Name String Candidate's full name [John, doe….] N/A
 Semester String Academic semester of the candidate (e.g., Freshman, Sophomore, Junior, Senior) [Freshman, Junior….] 4
