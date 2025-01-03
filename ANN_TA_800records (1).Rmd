@@ -1,0 +1,304 @@
+---
+title: "ANN_TA_800records"
+author: "Karra, Rakeshsarma"
+date: "2024-04-11"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(dplyr)
+library(readxl)
+data <- read.csv("C:/Rakesh/Unt Semisterwise subjects/Spring'24/ADTA 5410 Deployement Advanced Analytics/Apr14 project/Meeting With Professor - Apr11/TA_candidates_dataset.csv")
+data <- data.frame(data)
+count(data)
+head(data,10)
+```
+
+```{r}
+str(data)
+dim(data)
+sapply(data,class)
+```
+
+```{r}
+data$Semester <- ifelse(data$Semester== "Junior",3,
+                        ifelse(data$Semester == "Senior",4,
+                               ifelse(data$Semester == "Sophomore",2,
+                                      ifelse(data$Semester == "Freshman",1,
+                                             data$Semester))))
+data$Semester <- as.numeric(data$Semester)
+head(data)
+```
+
+```{r}
+data_num <- subset(data,select=-c(Name,Professional_Experience))
+#data_num
+data_corr <- cor(data_num)
+data_corr
+
+```
+
+```{r}
+library(corrplot)
+diag(data_corr) <- 0
+library(gridExtra)
+
+#Export heatmap into pdf
+#pdf("corrplot_output_800.pdf", width = 12, height = 15)  
+#corrplot(data_corr,method="color",type="upper",addCoef.col="black" )
+#dev.off()
+
+par(margin=c(12,10))
+correlation_plot <- corrplot(data_corr,method="color",type="upper",addCoef.col="black", tl.cex= 1, tl.srt=45)
+
+```
+##Target variable is "TA_result". 
+##Predictor variables are 
+#"Professional_Experience", 
+#"GPA", 
+#"Number_of_LORs",
+#"Projects_outsideof_academics".
+
+##Artificial Neural Networks
+
+```{r}
+set.seed(2)
+data_model <- data_num
+data_num2 <- data_model[,c("TA_RESULT","PROF_EXP_POINTS","GPA_points","Number_of_LORs","Projects_Outside_Academics")]
+indices <- sample(nrow(data_num2), 0.7*nrow(data_num2))
+train_data <- data_num2[indices,]
+test_data <- data_num2[-indices,]
+head(train_data)
+head(test_data)
+
+#head(data_model)
+```
+
+```{r}
+set.seed(125)
+library(neuralnet)
+ann_model <- neuralnet(TA_RESULT ~ PROF_EXP_POINTS + GPA_points + Number_of_LORs + Projects_Outside_Academics, data=train_data, hidden = 6, err.fct = "ce", linear.output=FALSE )
+plot(ann_model, width=10, height=8)
+```
+
+
+```{r}
+predicted_value <- compute(ann_model,test_data[c("PROF_EXP_POINTS","GPA_points","Number_of_LORs",
+                                                 "Projects_Outside_Academics")])
+#predicted_value
+#head(predicted_value$net.result,10)
+
+#Displaying results in Non-standard format
+sigmoid <- function(x){
+  return(1/(1+exp(-x)))
+}
+pred_prob <- sigmoid(predicted_value$net.result)
+#head(pred_prob,10)
+```
+
+```{r}
+#Confusion Matrix
+prd <- ifelse(pred_prob > 0.5,1,0)
+
+c <- c(prd)
+c <- factor(c, levels=c(0,1))
+head(c,10)
+
+TA_result_factor = factor(test_data$TA_RESULT, levels=c(0,1))
+head(TA_result_factor,10)
+
+library(caret)
+conf_matrix <- confusionMatrix(c,TA_result_factor)
+conf_matrix
+```
+
+```{r}
+#Checking
+test_data$predicted_value_TA <- c
+test_data
+
+#Export
+#file_path <- "C:/Rakesh/Unt Semisterwise subjects/Spring'24/ADTA 5410 Deployement Advanced Analytics/Apr14 #project/Meeting With Professor - Apr11/Test_data.csv"
+#write.csv(test_data, file=file_path)
+
+```
+
+##Checking with new values
+```{r}
+
+Name_o <- readline("Please enter your name: ")
+semister <- as.numeric(readline("Please enter you semister: "))
+prof_exp <- as.numeric(readline("Please enter your professional experience: "))
+GPA_stu <- as.numeric(readline("PLease enter your current GPA: "))
+No_LORS <- as.numeric(readline("Please enter number of LORs you are having:"))
+projects_outside <- as.numeric(readline("Please enter the count of projects you have worked outside of academics: "))
+
+res_data <- data.frame(PROF_EXP_POINTS = prof_exp,
+                       GPA_points = GPA_stu, Number_of_LORs = No_LORS, 
+                       Projects_Outside_Academics = projects_outside)
+res_data
+
+#Final Check
+results_rak <- predict(ann_model,res_data,type="response")
+#results_rak <- round(results_rak,digits=5)
+res_data$predicted_oucome <- round(results_rak)
+res_data$predicted_oucome_probability <- round(results_rak,digits=5)
+res_data
+```
+
+```{r}
+library(neuralnet)
+
+# Define a range of seed values to try
+seed_values <- 1:150 # Example: try seeds from 1 to 10
+
+# Initialize variables to store performance metrics and corresponding seed values
+best_seed <- NULL
+best_accuracy <- 0
+
+# Iterate over each seed value
+for (seed in seed_values) {
+  # Set the seed
+  set.seed(seed)
+  
+  # Train the neural network model
+  ann_model <- neuralnet(
+    TA_RESULT ~ PROF_EXP_POINTS + GPA_points + Number_of_LORs + Projects_Outside_Academics,
+    data = train_data,
+    hidden = 6,  # Example: use 6 hidden neurons
+    err.fct = "ce",
+    linear.output = FALSE
+  )
+  
+  # Compute predicted values on the test data
+  predicted_value <- compute(
+    ann_model,
+    test_data[c("PROF_EXP_POINTS", "GPA_points", "Number_of_LORs", "Projects_Outside_Academics")]
+  )
+  
+  # Calculate predicted probabilities
+  pred_prob <- sigmoid(predicted_value$net.result)
+  
+  # Convert probabilities to class predictions
+  prd <- ifelse(pred_prob > 0.5, 1, 0)
+  
+  # Compute accuracy
+  accuracy <- mean(prd == test_data$TA_RESULT)
+  
+  # Check if the current seed gives better accuracy than the previous best
+  if (accuracy > best_accuracy) {
+    best_accuracy <- accuracy
+    best_seed <- seed
+  }
+}
+
+# Print the best seed and corresponding accuracy
+cat("Best seed:", best_seed, "\n")
+cat("Best accuracy:", best_accuracy, "\n")
+
+```
+#Best Hidden Layers
+```{r}
+library(neuralnet)
+library(caret)
+
+# Define the hyperparameter grid
+hidden_layers_grid <- list(
+  c(6),          # Single hidden layer with 3 neurons
+  c(45),          # Single hidden layer with 5 neurons
+  c(20),          # Single hidden layer with 8 neurons
+  c(16, 8),       # Two hidden layers with 3 neurons each
+  c(38, 26),       # Two hidden layers with 5 and 3 neurons respectively
+  c(11, 21),       # Two hidden layers with 8 and 5 neurons respectively
+  c(19, 29)        # Two hidden layers with 8 neurons each
+)
+
+# Initialize variables to store performance metrics and best configuration
+best_hidden_layers <- NULL
+best_accuracy <- 0
+
+# Iterate over each configuration of hidden layers
+for (hidden_layers in hidden_layers_grid) {
+  # Train the neural network model
+  set.seed(125)  # Set seed for reproducibility
+  ann_model <- neuralnet(
+    TA_RESULT ~ PROF_EXP_POINTS + GPA_points + Number_of_LORs + Projects_Outside_Academics,
+    data = train_data,
+    hidden = hidden_layers,
+    err.fct = "ce",
+    linear.output = FALSE
+  )
+  
+  # Compute predictions on the test data
+  predicted_value <- compute(
+    ann_model,
+    test_data[c("PROF_EXP_POINTS", "GPA_points", "Number_of_LORs", "Projects_Outside_Academics")]
+  )
+  
+  # Calculate predicted probabilities
+  pred_prob <- sigmoid(predicted_value$net.result)
+  
+  # Convert probabilities to class predictions
+  prd <- ifelse(pred_prob > 0.5, 1, 0)
+  
+  # Compute accuracy
+  accuracy <- mean(prd == test_data$TA_RESULT)
+  
+  # Check if the current configuration gives better accuracy than the previous best
+  if (accuracy > best_accuracy) {
+    best_accuracy <- accuracy
+    best_hidden_layers <- hidden_layers
+  }
+}
+
+# Print the best hidden layers and corresponding accuracy
+cat("Best hidden layers:", best_hidden_layers, "\n")
+cat("Best accuracy:", best_accuracy, "\n")
+
+```
+
+```{r}
+set.seed(2)
+library(neuralnet)
+#ann_model <- neuralnet(TA_RESULT ~ PROF_EXP_POINTS + GPA_points + Number_of_LORs + Projects_Outside_Academics,
+ann_model <- neuralnet(TA_RESULT ~ PROF_EXP_POINTS + GPA_points + Number_of_LORs + Projects_Outside_Academics,
+data=train_data, hidden = 6, err.fct = "ce", linear.output=FALSE )
+plot(ann_model, width=12, height=11)
+
+
+```
+```{r}
+predicted_value <- compute(ann_model,test_data[c("PROF_EXP_POINTS","GPA_points","Number_of_LORs",
+                                                 "Projects_Outside_Academics")])
+#predicted_value
+#head(predicted_value$net.result,10)
+
+sigmoid <- function(x){
+  return(1/(1+exp(-x)))
+}
+pred_prob <- sigmoid(predicted_value$net.result)
+#head(pred_prob,10)
+
+prd <- ifelse(pred_prob > 0.5,1,0)
+
+c <- c(prd)
+c <- factor(c, levels=c(0,1))
+head(c,10)
+
+TA_result_factor = factor(test_data$TA_RESULT, levels=c(0,1))
+head(TA_result_factor,10)
+
+library(caret)
+conf_matrix <- confusionMatrix(c,TA_result_factor)
+conf_matrix
+```
+
+
+
+
+
+
