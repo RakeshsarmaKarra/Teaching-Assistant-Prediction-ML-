@@ -1,9 +1,9 @@
 # Teaching Assistant Eligibility Predictor using R-Shiny Application
 
-# Problem Statement:
+## Problem Statement:
 Identification of eligible students for the Teaching Assistant position in University of North Texas.
 
-# Data Dictionary
+## Data Dictionary
 Column Name Data Type Description Sample Values Number of unique Values
 Name String Candidate's full name [John, doe….] N/A
 Semester String Academic semester of the candidate (e.g., Freshman, Sophomore, Junior, Senior) [Freshman, Junior….] 4
@@ -15,10 +15,10 @@ TA Result Integer Indicates whether the candidate was selected as a TA (1 for ye
 
 Students need to provide their personal information to check their eligibility(probability score).
 
-# Technologies used: R Studio, R-Shiny web application
-# Programming Language: R
+## Technologies used: R Studio, R-Shiny web application
+## Programming Language: R
 
-# Machine Learning Models: Artificial Neural Networks, Logistic, Lasso, Ridge Regression models.
+## Machine Learning Models: Artificial Neural Networks, Logistic, Lasso, Ridge Regression models.
 
 We(My team) practiced these 4 machine learning models to get the expected values.
 
@@ -27,13 +27,13 @@ Accuracy: 92%
 Sensitivity: 92%
 Specificity: 100%
 
-# Confusion Matrix:
+## Confusion Matrix:
 Prediction Reference
-## 0 1
+##     0 1
 ## 0 208 0
 ## 1 17 15
 
-# For whom this application is useful:
+## For whom this application is useful:
 ## For Students:
 After providing their personal information to the application, model will start running and provide the results in probabilistic scores[0, 1]. 
 Then students can expect whether they will receive an interview call from the department advisor.
