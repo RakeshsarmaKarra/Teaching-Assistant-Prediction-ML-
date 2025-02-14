@@ -51,8 +51,8 @@ Specificity: 100%
 
 📸 Screenshots & Visualization for Web Application 
 
-<a href="https://github.com/RakeshsarmaKarra/Teaching-Assistant-Prediction-ML-/blob/main/Web%20Application%20Interface.jpg">
-    <img src="https://github.com/RakeshsarmaKarra/Teaching-Assistant-Prediction-ML-/blob/main/Web%20Application%20Interface.jpg" width="500">
+<a href="https://github.com/RakeshsarmaKarra/Teaching-Assistant-Prediction-ML-/blob/main/User%20Interface.png">
+    <img src="https://github.com/RakeshsarmaKarra/Teaching-Assistant-Prediction-ML-/blob/main/User%20Interface.png" width="500">
 </a>
 
 ## 🚀 How to Run the Application Locally                                                                                                             
