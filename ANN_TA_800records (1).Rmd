@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 library(dplyr)
 library(readxl)
-data <- read.csv("C:/Rakesh/Unt Semisterwise subjects/Spring'24/ADTA 5410 Deployement Advanced Analytics/Apr14 project/Meeting With Professor - Apr11/TA_candidates_dataset.csv")
+data <- read.csv("https://drive.google.com/uc?export=download&id=1jgnCPvo2X0zuinR-_7AP2_W0Gvpyqnvo")
 data <- data.frame(data)
 count(data)
 head(data,10)
