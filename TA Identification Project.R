@@ -87,7 +87,7 @@ server <- function(input, output) {
   submit_clicked <- reactiveVal(FALSE)
   
   data_preparation <- reactive({
-    data <- read.csv("C:/Rakesh/Rcourse/TA_candidates_dataset.csv")
+    data <- read.csv("https://drive.google.com/uc?export=download&id=1jgnCPvo2X0zuinR-_7AP2_W0Gvpyqnvo")
     data <- data.frame(data)
     
     data$Semester <- as.numeric(data$Semester)
