@@ -49,15 +49,18 @@ Specificity: 100%
 📌 Student records are stored in an Excel file.                                                                                                              
 📌 The department advisor can set a cutoff score (e.g., 0.7 or 0.8) based on open TA positions.                                                       
 
-📸 Screenshots & Visualization fro Web Application 
-![Click here](https://github.com/RakeshsarmaKarra/Teaching-Assistant-Prediction-ML-/blob/main/Web%20Application%20Interface.jpg)
+📸 Screenshots & Visualization for Web Application 
+
+<a href="https://github.com/RakeshsarmaKarra/Teaching-Assistant-Prediction-ML-/blob/main/Web%20Application%20Interface.jpg">
+    <img src="https://github.com/RakeshsarmaKarra/Teaching-Assistant-Prediction-ML-/blob/main/Web%20Application%20Interface.jpg" width="500">
+</a>
 
 ## 🚀 How to Run the Application Locally                                                                                                             
 1️⃣ Clone the Repository                                                                                                                                            
 sh                                                                                                                                                       
 Copy                                                                                                                                            
 Edit                                                                                                                                            
-git clone https://github.com/YOUR_USERNAME/TA-Eligibility-Predictor.git                                                                                      
+git clone https://github.com/RakeshsarmaKarra/TA-Eligibility-Predictor.git                                                                                      
 cd TA-Eligibility-Predictor                                                                                                                                            
 2️⃣ Install Dependencies                                                                                                                                            
 r                                                                                                                                                       
