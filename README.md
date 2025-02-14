@@ -1,43 +1,83 @@
-# Teaching Assistant Eligibility Predictor using R-Shiny Application
+# Teaching Assistant Eligibility Predictor 🎓 using Deep Learning Models                                                                                        
+🔗 Live R-Shiny App: [Click here](https://github.com/RakeshsarmaKarra/Teaching-Assistant-Prediction-ML-/blob/main/TA%20Identification%20Project.R)                       
+📂 Project Type: Machine Learning Web Application                                                                                                             
+🛠 Technologies Used: R Studio, R-Shiny
 
-## Problem Statement:
-Identification of eligible students for the Teaching Assistant position in University of North Texas.
+## 📌 Problem Statement
+The University of North Texas seeks an efficient way to identify eligible students for the Teaching Assistant (TA) position. This application predicts TA eligibility based on key academic and professional factors, providing probabilistic scores for both students and advisors.
 
-## Data Dictionary
-Column Name Data Type Description Sample Values Number of unique Values
-Name String Candidate's full name [John, doe….] N/A
-Semester String Academic semester of the candidate (e.g., Freshman, Sophomore, Junior, Senior) [Freshman, Junior….] 4
-Professional Experience String Indicates whether the candidate has professional experience (Yes/No) [Yes, NO] 2
-GPA Float Candidate's Grade Point Average [3.5, 3.8…..] N/A
-Number of Lor’s Integer Number of Letters of Recommendation the candidate has [0,1, 2..] N/A
-Projects outside of academics Integer Number of projects the candidate has been involved in outside academics [0,1, 2..] N/A
-TA Result Integer Indicates whether the candidate was selected as a TA (1 for yes, 0 for no) [0,1] 2
+## 📊 Data Dictionary
+| Column Name               | Data Type | Description                                             |
+|---------------------------|----------|---------------------------------------------------------|
+| Name                      | String   | Candidate's full name                                  |
+| Semester                  | String   | Academic semester (Freshman, Sophomore, Junior, Senior) |
+| Professional Experience   | String   | Indicates prior work experience (Yes/No)               |
+| GPA                       | Float    | Candidate’s Grade Point Average                        |
+| Number of LORs            | Integer  | Letters of Recommendation count                        |
+| Projects outside Academics| Integer  | Number of external projects participated in            |
+| TA Result                 | Integer  | TA selection result (1 = Yes, 0 = No)                  |
 
-Students need to provide their personal information to check their eligibility(probability score).
+## ⚙️ Technologies & Models Used                                                                                                                      
+Programming Language: **R**                                                                                                                                        
+Framework: **R-Shiny (Web Application)**                                                                                                                         
 
-## Technologies used: R Studio, R-Shiny web application
-## Programming Language: R
+**Machine Learning Models Tested:**                                                                                                                  
+🔹 Artificial Neural Networks (ANN)                                                                                                                                       
+🔹 Logistic Regression                                                                                                                                       
+🔹 Lasso Regression                                                                                                                                       
+🔹 Ridge Regression                                                                                                                                       
+✅ Best Model: ANN                                                                                                                                       
 
-## Machine Learning Models: Artificial Neural Networks, Logistic, Lasso, Ridge Regression models.
+## 📈 Performance Metrics:                                                                                                                                      
+Accuracy: 92%                                                                                                                                       
+Sensitivity: 92%                                                                                                                                       
+Specificity: 100%                                                                                                                                       
 
-We(My team) practiced these 4 machine learning models to get the expected values.
+## 📑 Confusion Matrix                                                                                                                                       
+| Prediction \ Reference | 0 (Not Selected) | 1 (Selected) |
+|------------------------|------------------|--------------|
+| 0 (Predicted Not Selected) | 208              | 0            |
+| 1 (Predicted Selected)     | 17               | 15           |
 
-Out of these models used, ANN model gave us best accuracy scores.
-Accuracy: 92%
-Sensitivity: 92%
-Specificity: 100%
+## 💡 How the Application Works                                                                                                              
+**For Students:**                                                                                                              
+📌 Enter your GPA, Semester, LORs, Projects, and Experience into the R-Shiny interface.                                                       
+📌 The model predicts your eligibility score (between 0 and 1).                                                                                                              
+📌 If your probability score is high, you have a better chance of getting a TA interview call.                                                       
 
-## Confusion Matrix:
-Prediction Reference
-##     0 1
-## 0 208 0
-## 1 17 15
+**For Advisors:**                                                                                                              
+📌 Student records are stored in an Excel file.                                                                                                              
+📌 The department advisor can set a cutoff score (e.g., 0.7 or 0.8) based on open TA positions.                                                       
 
-## For whom this application is useful:
-## For Students:
-After providing their personal information to the application, model will start running and provide the results in probabilistic scores[0, 1]. 
-Then students can expect whether they will receive an interview call from the department advisor.
+📸 Screenshots & Visualization fro Web Application 
+![Click here](https://github.com/RakeshsarmaKarra/Teaching-Assistant-Prediction-ML-/blob/main/Web%20Application%20Interface.jpg)
 
-## For Advisor:
-Records will be stored in an excel file for those students who are checking their probabilistic scores.
-So, advisor can decide the cut-off score(ex: 0.7 or 0.8 etc.) based on the open positions.
+## 🚀 How to Run the Application Locally                                                                                                             
+1️⃣ Clone the Repository                                                                                                                                            
+sh                                                                                                                                                       
+Copy                                                                                                                                            
+Edit                                                                                                                                            
+git clone https://github.com/YOUR_USERNAME/TA-Eligibility-Predictor.git                                                                                      
+cd TA-Eligibility-Predictor                                                                                                                                            
+2️⃣ Install Dependencies                                                                                                                                            
+r                                                                                                                                                       
+Copy                                                                                                                                            
+Edit                                                                                                                                            
+install.packages(c("tidyverse", "rpart", "leaps", "c3", "shinyWidgets", "plotly", "shiny", "bslib", "corrplot", "neuralnet"))                                      
+3️⃣ Run the Application                                                                                                                                            
+r                                                                                                                                            
+Copy                                                                                                                                                                          
+Edit                                                                                                                                            
+shiny::runApp("app.R")
+
+👥 Contributors                                                                                                                                            
+👨‍💻 Rakesh Sarma Karra                                                                                                                                                        
+👨‍💻 Sowmya Nomula
+
+📬 Contact & Feedback
+For any questions, feel free to reach out!
+
+📧 Email: **rakeshsarmakarra@gmail.com**
+📌 LinkedIn: [Click here](https://www.linkedin.com/in/rakesh-da/)
+
+
