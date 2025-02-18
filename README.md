@@ -1,4 +1,6 @@
 # Teaching Assistant Eligibility Predictor 🎓 using Deep Learning Models                                                                                        
+![Eligibility Predictor](https://github.com/RakeshsarmaKarra/Teaching-Assistant-Prediction-ML-/blob/main/User%20Interface.png)                                         
+
 🔗 Live R-Shiny App: [Click here](https://github.com/RakeshsarmaKarra/Teaching-Assistant-Prediction-ML-/blob/main/TA%20Identification%20Project.R)                       
 📂 Project Type: Machine Learning Web Application                                                                                                             
 🛠 Technologies Used: R Studio, R-Shiny
@@ -51,9 +53,14 @@ Specificity: 100%
 
 📸 Screenshots & Visualization for Web Application 
 
-<a href="https://github.com/RakeshsarmaKarra/Teaching-Assistant-Prediction-ML-/blob/main/User%20Interface.png">
-    <img src="https://github.com/RakeshsarmaKarra/Teaching-Assistant-Prediction-ML-/blob/main/User%20Interface.png" width="500">
+<a href="https://github.com/RakeshsarmaKarra/Teaching-Assistant-Prediction-ML-/blob/main/Correlation%20plot.jpg">
+    <img src="https://github.com/RakeshsarmaKarra/Teaching-Assistant-Prediction-ML-/blob/main/Correlation%20plot.jpg" width="500">
 </a>
+
+<a href="https://github.com/RakeshsarmaKarra/Teaching-Assistant-Prediction-ML-/blob/main/Gauge%20plot.jpg">
+    <img src="https://github.com/RakeshsarmaKarra/Teaching-Assistant-Prediction-ML-/blob/main/Gauge%20plot.jpg" width="500">
+</a>
+
 
 ## 🚀 How to Run the Application Locally                                                                                                             
 1️⃣ Clone the Repository                                                                                                                                            
