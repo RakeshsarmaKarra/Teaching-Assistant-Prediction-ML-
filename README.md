@@ -32,8 +32,8 @@ Framework: **R-Shiny (Web Application)**
 
 ## 📈 Performance Metrics:                                                                                                                                      
 Accuracy: 92%                                                                                                                                       
-Sensitivity: 92%                                                                                                                                       
-Specificity: 100%                                                                                                                                       
+Sensitivity: 100%                                                                                                                                       
+Specificity: 92%                                                                                                                                       
 
 ## 📑 Confusion Matrix                                                                                                                                       
 | Prediction \ Reference | 0 (Not Selected) | 1 (Selected) |
