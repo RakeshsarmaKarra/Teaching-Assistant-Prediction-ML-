@@ -1,9 +1,14 @@
 # Teaching Assistant Eligibility Predictor 🎓 using Deep Learning Models                                                                                        
 ![Eligibility Predictor](https://github.com/RakeshsarmaKarra/Teaching-Assistant-Prediction-ML-/blob/main/User%20Interface.png)                                         
 
-🔗 Live R-Shiny App: [Click here](https://github.com/RakeshsarmaKarra/Teaching-Assistant-Prediction-ML-/blob/main/TA%20Identification%20Project.R)                       
-📂 Project Type: Machine Learning Web Application                                                                                                             
-🛠 Technologies Used: R Studio, R-Shiny
+🔗 Live R-Shiny App: [Click here](https://github.com/RakeshsarmaKarra/Teaching-Assistant-Prediction-ML-/blob/main/TA%20Identification%20Project.R) 
+
+📂 Project Type: Machine Learning Web Application                 
+
+🛠 Technologies Used: R Studio, R-Shiny                                                         
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/RakeshsarmaKarra/Teaching-Assistant-Prediction-ML-)
+
 
 ## 📌 Problem Statement
 The University of North Texas seeks an efficient way to identify eligible students for the Teaching Assistant (TA) position. This application predicts TA eligibility based on key academic and professional factors, providing probabilistic scores for both students and advisors.
