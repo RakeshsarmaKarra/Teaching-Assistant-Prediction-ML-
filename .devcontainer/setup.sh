@@ -3,6 +3,7 @@ set -e
 
 apt-get update
 apt-get install -y --no-install-recommends \
+    git \
     libcurl4-openssl-dev \
     libssl-dev \
     libxml2-dev \
@@ -15,4 +16,17 @@ apt-get install -y --no-install-recommends \
     libjpeg-dev \
     pandoc
 
-R -q -e "install.packages(c('tidyverse','caret','randomForest','e1071','rpart','rpart.plot','ggplot2','dplyr','readr','janitor'), repos='https://cloud.r-project.org')"
+R -q -e "pkgs <- c(
+            'languageserver',
+            'tidyverse',
+            'randomForest',
+            'e1071',
+            'rpart',
+            'rpart.plot',
+            'ggplot2',
+            'dplyr',
+            'readr',
+            'janitor'
+          );
+          missing <- pkgs[!pkgs %in% rownames(installed.packages())];
+          if (length(missing)) install.packages(missing, repos='https://cloud.r-project.org')"
