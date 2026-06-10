@@ -1,0 +1,29 @@
+{
+  "name": "Teaching Assistant Prediction ML - R",
+  "image": "rocker/r-ver:4.3.3",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "REditorSupport.r",
+        "RDebugger.r-debugger",
+        "ms-toolsai.jupyter",
+        "quarto.quarto"
+      ],
+      "settings": {
+        "r.rterm.linux": "/usr/bin/R",
+        "r.bracketedPaste": true,
+        "files.associations": {
+          "*.R": "r",
+          "*.Rmd": "rmd"
+        }
+      }
+    },
+    "codespaces": {
+      "openFiles": [
+        "README.md"
+      ]
+    }
+  },
+  "updateContentCommand": "bash .devcontainer/setup.sh",
+  "postAttachCommand": "if [ -f README.md ]; then code README.md; fi"
+}
