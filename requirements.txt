@@ -1,0 +1,10 @@
+tidyverse
+caret
+randomForest
+e1071
+rpart
+rpart.plot
+ggplot2
+dplyr
+readr
+janitor
