@@ -27,3 +27,12 @@
   "updateContentCommand": "bash .devcontainer/setup.sh",
   "postAttachCommand": "if [ -f README.md ]; then code README.md; fi"
 }
+
+"settings": {
+  "r.rterm.linux": "/usr/local/bin/R",
+  "r.bracketedPaste": true,
+  "files.associations": {
+    "*.R": "r",
+    "*.Rmd": "rmd"
+  }
+}
