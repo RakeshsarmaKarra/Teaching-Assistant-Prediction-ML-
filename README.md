@@ -7,7 +7,7 @@
 
 🛠 Technologies Used: R Studio, R-Shiny                                                         
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/RakeshsarmaKarra/Teaching-Assistant-Prediction-ML-)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/RakeshsarmaKarra/Teaching-Assistant-Prediction-ML-)
 
 
 ## 📌 Problem Statement
