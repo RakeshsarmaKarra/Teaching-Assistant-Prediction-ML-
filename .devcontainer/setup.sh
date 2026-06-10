@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -e
 
-sudo apt-get update
-sudo apt-get install -y --no-install-recommends \
+apt-get update
+apt-get install -y --no-install-recommends \
     libcurl4-openssl-dev \
     libssl-dev \
     libxml2-dev \
